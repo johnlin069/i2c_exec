@@ -10,10 +10,10 @@ $global:DumpData = @{}
 
 function Parse-NormalizedDump($inputFile)
 {
-    Write-Host ""
-    Write-Host "==========================================" -ForegroundColor Green
-    Write-Host "Parse Normalized Dump" -ForegroundColor Green
-    Write-Host "==========================================" -ForegroundColor Green
+    #Write-Host ""
+    #Write-Host "==========================================" -ForegroundColor Green
+    #Write-Host "Parse Normalized Dump" -ForegroundColor Green
+    #Write-Host "==========================================" -ForegroundColor Green
 
     if(-not (Test-Path $inputFile))
     {
@@ -56,10 +56,10 @@ function Parse-NormalizedDump($inputFile)
             $currentSled = $matches[1]
             $currentDev  = $matches[2]
 
-            Write-Host ""
-            Write-Host (
-                "[HEADER] SLED=$currentSled DEVICE=$currentDev"
-            ) -ForegroundColor Cyan
+            #Write-Host ""
+            #Write-Host (
+            #    "[HEADER] SLED=$currentSled DEVICE=$currentDev"
+            #) -ForegroundColor Cyan
 
             # =================================================
             # Create SLED
@@ -151,9 +151,9 @@ function Parse-NormalizedDump($inputFile)
         }
     }
 
-    Write-Host ""
-    Write-Host "==========================================" -ForegroundColor Green
-    Write-Host "Parse Done" -ForegroundColor Green
-    Write-Host "==========================================" -ForegroundColor Green
+    #Write-Host ""
+    #Write-Host "==========================================" -ForegroundColor Green
+    #Write-Host "Parse Done" -ForegroundColor Green
+    #Write-Host "==========================================" -ForegroundColor Green
 }
 

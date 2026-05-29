@@ -30,8 +30,8 @@ $logFiles = Get-ChildItem $INPUT_PATH | Where-Object {
 
 foreach($file in $logFiles)
 {
-    Write-Host ""
-    Write-Host ("Normalize : " + $file.Name) -ForegroundColor Green
+    # Write-Host ""
+    # Write-Host ("Normalize : " + $file.Name) -ForegroundColor Green
 
     # =====================================================
     # Default State
@@ -57,33 +57,33 @@ foreach($file in $logFiles)
     {
         $currentDev = "DC-SCM"
 
-        Write-Host (
-            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        ) -ForegroundColor Yellow
+        # Write-Host (
+        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        #) -ForegroundColor Yellow
     }
     elseif($file.Name -match 'cpld1')
     {
         $currentDev = "HPM CPLD1"
 
-        Write-Host (
-            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        ) -ForegroundColor Yellow
+        # Write-Host (
+        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        #) -ForegroundColor Yellow
     }
     elseif($file.Name -match 'cpld2')
     {
         $currentDev = "HPM CPLD2"
 
-        Write-Host (
-            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        ) -ForegroundColor Yellow
+        # Write-Host (
+        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        #) -ForegroundColor Yellow
     }
     elseif($file.Name -match 'gbl')
     {
         $currentDev = "GLOBAL CPLD"
 
-        Write-Host (
-            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        ) -ForegroundColor Yellow
+        # Write-Host (
+        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        #) -ForegroundColor Yellow
     }
 
     # =====================================================
@@ -193,5 +193,5 @@ foreach($file in $logFiles)
     }
 }
 
-Write-Host ""
-Write-Host "Normalize Done -> normalized_dump.txt" -ForegroundColor Green
+#Write-Host ""
+#Write-Host "Normalize Done -> normalized_dump.txt" -ForegroundColor Green
