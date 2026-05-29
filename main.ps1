@@ -1,13 +1,6 @@
-$Mode = Read-Host @"
-
-Select Compare Mode
-
-1 = C41AB  (Compare with Exp)
-2 = C43AB  (SLED1 vs SLED2)
-3 = C46AB  (SLED1/2/3/4 consistency)
-
-Input
-"@
+# =====================================================
+# Pass Log show or not 
+# =====================================================
 
 $ShowPass = (Read-Host "Show PASS message? (Y/N)").ToUpper()
 
@@ -44,28 +37,30 @@ $REGMAP = @{}
 
 
 # =====================================================
-# Decode && Compare
+# Decode values
 # =====================================================
 
-switch($Mode)
-{
-    "1"
-    {
-        Decode-All
-    }
+Decode-All
 
-    "2"
-    {
-        Compare-All
-    }
-
-    "3"
-    {
-        Compare-All
-    }
-
-    default
-    {
-        Write-Host "[ERROR] Invalid Mode" -ForegroundColor Red
-    }
-}
+#switch($Mode)
+#{
+#    "1"
+#    {
+#        Decode-All
+#    }
+#
+#    "2"
+#    {
+#        Compare-All
+#    }
+#
+#    "3"
+#    {
+#        Compare-All
+#    }
+#
+#    default
+#    {
+#        Write-Host "[ERROR] Invalid Mode" -ForegroundColor Red
+#    }
+#}

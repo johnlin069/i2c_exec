@@ -1,8 +1,8 @@
 # =====================================================
-# Compare SLED1 / SLED2
+# Compare SLED1 / SLED2 (Not Use)
 # =====================================================
 
-function Compare-All
+function Compare-All 
 {
     Write-Host ""
     Write-Host "==========================================" -ForegroundColor Green
