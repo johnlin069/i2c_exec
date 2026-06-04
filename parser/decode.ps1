@@ -158,7 +158,7 @@ function Decode-All
 
                 $fieldValues = @()
                 $line = (
-                    "    [{0}:{1}] {2,-30}" -f
+                    "    [{0}:{1}] {2,-36}" -f
                     $msb,
                     $lsb,
                     $field.Name
@@ -244,7 +244,7 @@ function Decode-All
 									$verAux   = $devData[$field.CombineVersion.Aux]
 								
 									$valueText = (
-										"{0:X2}.{1:X2}.{2:X2} [INFO]" -f
+										"{0:X2}.{1:X2}.{2:X2}" -f
 										$verMajor,
 										$verMinor,
 										$verAux
@@ -266,7 +266,7 @@ function Decode-All
 										$field.CombineSCMVersion.MinorLSB
 								
 									$valueText = (
-										"{0:X2}.{1:X2} [INFO]" -f
+										"{0:X2}.{1:X2}" -f
 										$majorVal,
 										$minorVal
 									)
@@ -274,8 +274,7 @@ function Decode-All
 								else
 								{
 									$valueText = (
-										"{0} [INFO] Meaning:{1}" -f
-										$fieldVal,
+										"{0}" -f
 										$meaningText
 									)
 								}
@@ -331,19 +330,25 @@ function Decode-All
                                         $hasFail = $true
                                     }
                                 }
-
-                                if($result -eq "FAIL")
-                                {
-                                    $valueText = (
-                                        "{0} (Exp:{1}) [{2}] Meaning:{3}" -f
-                                        $fieldVal,
-                                        ($field.Exp -join ","),
-                                        $result,
-                                        $meaningText
-                                    )
+                                if($field.ContainsKey("STATE_INFO")){
+                                    if($result -eq "FAIL")
+                                    {
+                                        $valueText = (
+                                            "{0} [{1}]" -f 
+                                            $meaningText,
+                                            $result 
+                                        )
+                                    }
+                                    else
+                                    {
+                                        $valueText = (
+                                            "{0} [{1}]" -f 
+                                            $meaningText,
+                                            $result 
+                                        )
+                                    }
                                 }
-                                else
-                                {
+                                else{
                                     $valueText = (
                                         "{0} (Exp:{1}) [{2}]" -f
                                         $fieldVal,
@@ -366,7 +371,7 @@ function Decode-All
                     }
 
                     $line += (
-                        " | {0,-8}: {1,-20}" -f
+                        " | {0,-8}: {1,-26}" -f
                         $sled,
                         $valueText
                     )
@@ -417,10 +422,10 @@ function Decode-All
 								Write-Host $seg -ForegroundColor Green -NoNewline
 							}
 				
-							"[INFO]"
-							{
-								Write-Host $seg -ForegroundColor Cyan -NoNewline
-							}
+							#"[INFO]"
+							#{
+							#	Write-Host $seg -ForegroundColor Cyan -NoNewline
+							#}
 				
 							"[DIFF]"
 							{
@@ -441,7 +446,7 @@ function Decode-All
 
     Write-Host ""
     Write-Host "==========================================" -ForegroundColor Green
-    Write-Host "Decode Done" -ForegroundColor Green
+    Write-Host "Done" -ForegroundColor Green
     Write-Host "==========================================" -ForegroundColor Green
 }
 function Get-FieldValue

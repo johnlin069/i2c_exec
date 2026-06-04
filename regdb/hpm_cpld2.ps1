@@ -29,13 +29,6 @@ $REGMAP["HPM CPLD2"] = @{
 	
 				Exp = 1
 			}
-	
-			@{
-				Name = "Reserved1"
-				MSB = 1
-				LSB = 1
-				Exp = 0
-			}
 		)
 	}	
 	
@@ -75,10 +68,6 @@ $REGMAP["HPM CPLD2"] = @{
 					3 = "ID3"
 				}
 			}
-	
-			@{Name="Reserved7"   ; MSB=7; LSB=7; Exp=0}
-			@{Name="Reserved4_3" ; MSB=4; LSB=3; Exp=0}
-			@{Name="Reserved0"   ; MSB=0; LSB=0; Exp=0}
 		)
 	}	
 	
@@ -94,6 +83,9 @@ $REGMAP["HPM CPLD2"] = @{
 				LSB = 4
 	
 				InfoOnly = 1
+				Meaning = @{
+					0 = "Correct SKU"
+				}
 			}
 	
 			@{
@@ -127,8 +119,7 @@ $REGMAP["HPM CPLD2"] = @{
 					3 = "SLED3"
 				}
 			}
-	
-			@{Name="Reserved7" ; MSB=7; LSB=7; Exp=0}
+
 		)
 	}
 
@@ -146,7 +137,6 @@ $REGMAP["HPM CPLD2"] = @{
 				Exp = 1
 			}
 	
-			@{Name="Reserved7_1"; MSB=7; LSB=1; Exp=0}
 		)
 	}
 	
@@ -158,8 +148,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="ES2_INTR_N" ; MSB=6; LSB=6; Exp=1}
 			@{Name="ES3_INTR_N" ; MSB=5; LSB=5; Exp=1}
 			@{Name="ES4_INTR_N" ; MSB=4; LSB=4; Exp=1}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -171,8 +159,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="ES2_INTR_NP12V_ES2_WE" ; MSB=6; LSB=6; Exp=0}
 			@{Name="ES3_INTR_NP12V_ES3_WE" ; MSB=5; LSB=5; Exp=0}
 			@{Name="ES4_INTR_NP12V_ES4_WE" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -184,8 +170,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="PRSNT_ES2_R_N" ; MSB=6; LSB=6; Exp=1}
 			@{Name="PRSNT_ES3_R_N" ; MSB=5; LSB=5; Exp=1}
 			@{Name="PRSNT_ES4_R_N" ; MSB=4; LSB=4; Exp=1}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -197,8 +181,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="PWRGD_P3V3_AUX_ES2" ; MSB=6; LSB=6; Exp=0}
 			@{Name="PWRGD_P3V3_AUX_ES3" ; MSB=5; LSB=5; Exp=0}
 			@{Name="PWRGD_P3V3_AUX_ES4" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -210,8 +192,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="P12V_ES2_EN" ; MSB=6; LSB=6; Exp=0}
 			@{Name="P12V_ES3_EN" ; MSB=5; LSB=5; Exp=0}
 			@{Name="P12V_ES4_EN" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -223,8 +203,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="PWRGD_ES2_N" ; MSB=6; LSB=6; Exp=1}
 			@{Name="PWRGD_ES3_N" ; MSB=5; LSB=5; Exp=1}
 			@{Name="PWRGD_ES4_N" ; MSB=4; LSB=4; Exp=1}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -236,8 +214,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="PWRGD_ES2_N" ; MSB=6; LSB=6; Exp=0}
 			@{Name="PWRGD_ES3_N" ; MSB=5; LSB=5; Exp=0}
 			@{Name="PWRGD_ES4_N" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -249,8 +225,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="P3V3_AUX_ES2_EN" ; MSB=6; LSB=6; Exp=0}
 			@{Name="P3V3_AUX_ES3_EN" ; MSB=5; LSB=5; Exp=0}
 			@{Name="P3V3_AUX_ES4_EN" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -262,8 +236,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="RST_ES2_PERST_N" ; MSB=6; LSB=6; Exp=0}
 			@{Name="RST_ES3_PERST_N" ; MSB=5; LSB=5; Exp=0}
 			@{Name="RST_ES4_PERST_N" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -300,8 +272,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="P3V3_ES_BMC_EN2" ; MSB=6; LSB=6; Exp=1}
 			@{Name="P3V3_ES_BMC_EN3" ; MSB=5; LSB=5; Exp=1}
 			@{Name="P3V3_ES_BMC_EN4" ; MSB=4; LSB=4; Exp=1}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -313,8 +283,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="P12V_ES_BMC_EN2" ; MSB=6; LSB=6; Exp=1}
 			@{Name="P12V_ES_BMC_EN3" ; MSB=5; LSB=5; Exp=1}
 			@{Name="P12V_ES_BMC_EN4" ; MSB=4; LSB=4; Exp=1}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -326,8 +294,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="BMC_E1S_PERST_CTRL_N2" ; MSB=6; LSB=6; Exp=1}
 			@{Name="BMC_E1S_PERST_CTRL_N3" ; MSB=5; LSB=5; Exp=1}
 			@{Name="BMC_E1S_PERST_CTRL_N4" ; MSB=4; LSB=4; Exp=1}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}
 	
@@ -339,8 +305,6 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="SSD_INTR_N_CLR2" ; MSB=6; LSB=6; Exp=0}
 			@{Name="SSD_INTR_N_CLR3" ; MSB=5; LSB=5; Exp=0}
 			@{Name="SSD_INTR_N_CLR4" ; MSB=4; LSB=4; Exp=0}
-	
-			@{Name="Reserved3_0" ; MSB=3; LSB=0; Exp=0}
 		)
 	}	
 	
@@ -422,8 +386,6 @@ $REGMAP["HPM CPLD2"] = @{
 				}
 			}
 	
-			@{Name="Reserved6_1"; MSB=6; LSB=1; Exp=0}
-	
 		)
 	}
 	
@@ -465,62 +427,46 @@ $REGMAP["HPM CPLD2"] = @{
 		)
 	}
 
-
-	0xA8 = @{
-		Name = "Internal State"
-	
-		Fields = @(
-	
-			@{
-				Name = "rvwire_debug_gpio"
-	
-				MSB = 7
-				LSB = 4
-	
-				InfoOnly = 1
-			}
-	
-			@{
-				Name = "iwire_debug_gpio"
-	
-				MSB = 3
-				LSB = 0
-	
-				InfoOnly = 1
-			}
-	
-		)
-	}
-
-	0xA9 = @{
-		Name = "Internal State"
-	
-		Fields = @(
-	
-			@{
-				Name = "iDEBUG_LED"
-	
-				MSB = 7
-				LSB = 0
-	
-				InfoOnly = 1
-			}
-	
-		)
-	}
-
 	0xAA = @{
 		Name = "Internal State"
 	
 		Fields = @(
 	
 			@{
-				Name = "Power Sequence"
-	
+				Name = "PWR STATE"
 				MSB = 7
 				LSB = 0
-	
-				InfoOnly = 1
+				Exp = @(0xFF)
+				STATE_INFO = $true
+				Meaning = @{
+					0x00 = "INIT"
+					0x01 = "HPM_STBY_RDY"
+					0x02 = "P1V8_AUX_PWRGD"
+					0x03 = "P1V05_AUX_PWRGD"
+					0x04 = "PVCCFA_EHV_CPU0_PWRGD"
+					0x05 = "PVNN_MAIN_CPU0_PWRGD"
+					0x06 = "HPM_STBY_RST"
+					0x07 = "AUX_PWRGD_CPU0_PLD"
+					0x08 = "SLPS4_N & SLP_S3_N is on"
+					0x09 = "P12V_MAIN_PWRGD"
+					0x0A = "P3V3_MAIN_PWRGD"
+					0x0B = "PVCCFA_EHV_CPU1_PWRGD"
+					0x0C = "PVNN_MAIN_CPU1_PWRGD"
+					0x0D = "PWRGD_AUX_PWRGD_CPU1_PLD"
+					0x0E = "PWRGD_PVCCD_HV_CPU0"
+					0x0F = "PWRGD_PVCCD_HV_CPU1"
+					0x10 = "PWRGD_PVCCFA_EHV_FIVRA_CPU0"
+					0x11 = "PWRGD_PVCCFA_EHV_FIVRA_CPU1"
+					0x12 = "PWRGD_PVCCINF_CPU0"
+					0x13 = "PWRGD_PVCCINF_CPU1"
+					0x14 = "PWRGD_PVCCIN_CPU0"
+					0x15 = "PWRGD_PVCCIN_CPU1"
+					0x16 = "PWRGD_S0_PWROK_CPU0"
+					0x17 = "PWRGD_S0_PWROK_CPU1"
+					0x18 = "CPU0_REFCLK_RDY"
+					0x19 = "CPU1_REFCLK_RDY"
+					0xFF = "RST_PLTRST, system on"
+				}
 			}
 	
 		)
@@ -547,9 +493,7 @@ $REGMAP["HPM CPLD2"] = @{
 				LSB = 0
 	
 				Exp = 0
-			}
-	
-			@{Name="Reserved7_2"; MSB=7; LSB=2; Exp=0}
+			}	
 	
 		)
 	}
@@ -563,6 +507,8 @@ $REGMAP["HPM CPLD2"] = @{
 				Name = "Version"
 	
 				InfoOnly = 1
+				MSB = 7
+				LSB = 0
 	
 				CombineVersion = @{
 					Major = 0xFE

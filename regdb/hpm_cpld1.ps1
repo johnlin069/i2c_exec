@@ -94,10 +94,10 @@ $REGMAP["HPM CPLD1"] = @{
     
             @{Name="Power button signal to CPU"                       ; MSB=7; LSB=7; Exp=0x1}
             @{Name="Reset button signal to CPU"                       ; MSB=6; LSB=6; Exp=0x1}
-            @{Name="SLPS4 from CPU"                                   ; MSB=5; LSB=5; Exp=0x1}
-            @{Name="SLPS3 from CPU"                                   ; MSB=4; LSB=4; Exp=0x1}
-            @{Name="P12V fail reset input"                            ; MSB=3; LSB=3; Exp=0x1}
-            @{Name="Power good signal to indicate P12_MAIN_R status"  ; MSB=2; LSB=2; Exp=0x1}   
+            @{Name="SLPS4 From CPU"                                   ; MSB=5; LSB=5; Exp=0x1}
+            @{Name="SLPS3 From CPU"                                   ; MSB=4; LSB=4; Exp=0x1}
+            @{Name="P12V Fail Reset Input"                            ; MSB=3; LSB=3; Exp=0x1}
+            @{Name="PWRGD P12_MAIN_R Status"                          ; MSB=2; LSB=2; Exp=0x1}   
         )
     }
     
@@ -299,9 +299,9 @@ $REGMAP["HPM CPLD1"] = @{
     
         Fields = @(
     
-            @{Name="CPU0 send platform reset to CPLD" ; MSB=7; LSB=7; Exp=1}
-            @{Name="RST_CPU0_RESET_R_N(CPLD to reset CPU0)" ; MSB=6; LSB=6; Exp=1}
-            @{Name="RST_CPU1_RESET_R_N(CPLD to reset CPU1)" ; MSB=5; LSB=5; Exp=1}
+            @{Name="CPU0 Send PLTRST to CPLD" ; MSB=7; LSB=7; Exp=1}
+            @{Name="RST_CPU0_RESET_R_N(Reset CPU0)" ; MSB=6; LSB=6; Exp=1}
+            @{Name="RST_CPU1_RESET_R_N(Reset CPU1)" ; MSB=5; LSB=5; Exp=1}
     
         )
     }
@@ -324,7 +324,7 @@ $REGMAP["HPM CPLD1"] = @{
     
             @{Name="SMB_MM7_SEL" ; MSB=2; LSB=2; Exp=0}
             @{Name="SMB_MM6_SEL" ; MSB=1; LSB=1; Exp=0}
-            @{Name="1 indicates BIOS read/write, 0 indicates BMC read/write" ; MSB=0; LSB=0; Exp=0}
+            @{Name="1:BIOS & 0:BMC" ; MSB=0; LSB=0; Exp=0}
     
         )
     }
@@ -400,14 +400,14 @@ $REGMAP["HPM CPLD1"] = @{
 	
 		Fields = @(
 	
-			@{Name="Power Button - SYS_PWRBTN_R_N"                 ; MSB=7; LSB=7; Exp=0}
-			@{Name="SCM CPLD feeds into HPM CPLD RSMRST# logic"    ; MSB=6; LSB=6; Exp=0}
-			@{Name="Platform Reset Signal to SCM CPLD"             ; MSB=5; LSB=5; Exp=0}
-			@{Name="Indicate system power is OK"                   ; MSB=4; LSB=4; Exp=0}
-			@{Name="Inform SCM CPLD that HPM standby power ready"  ; MSB=3; LSB=3; Exp=0}
-			@{Name="SCM CPLD to enable HPM standby power"          ; MSB=2; LSB=2; Exp=0}
-			@{Name="SPARE0"                                        ; MSB=1; LSB=1; Exp=0}
-			@{Name="SPARE1"                                        ; MSB=0; LSB=0; Exp=0}
+			@{Name="Power Button - SYS_PWRBTN_R_N"                 ; MSB=7; LSB=7; Exp=1}
+			@{Name="SCM CPLD to HPM CPLD RSMRST# logic"            ; MSB=6; LSB=6; Exp=1}
+			@{Name="Platform Reset Signal to SCM CPLD"             ; MSB=5; LSB=5; Exp=1}
+			@{Name="Indicate system power is OK"                   ; MSB=4; LSB=4; Exp=1}
+			@{Name="Inform SCM CPLD that HPM STBY RDY"             ; MSB=3; LSB=3; Exp=1}
+			@{Name="SCM CPLD Enable HPM STBY PWR"                  ; MSB=2; LSB=2; Exp=1}
+			@{Name="SPARE0"                                        ; MSB=1; LSB=1; Exp=1}
+			@{Name="SPARE1"                                        ; MSB=0; LSB=0; Exp=1}
 	
 		)
 	}
@@ -634,17 +634,19 @@ $REGMAP["HPM CPLD1"] = @{
 		Fields = @(
 
 			@{
-				Name = "Determine CPU SKU or 1P/2P/Mismatched/No CPU"
+				Name = "(CPU)SYS_Check"
 				MSB = 7
 				LSB = 4
 				Exp = @(0x4)
-	
+				STATE_INFO = $true
 				Meaning = @{
-					0x0 = "Fail"
-					0x1 = "Fail"
-					0x2 = "Fail"
-					0x3 = "Fail"
-					0x4 = "Pass"
+					0x0 = "INIT"
+					0x1 = "VALID_CPU0"
+					0x2 = "VALID_CPU1"
+					0x3 = "SYS_OK_1P"
+					0x4 = "SYS_OK_2P"
+					0x5 = "CPU_MISMATCH"
+					0x6 = "SKT_REMOVED"
 				}
 			}
 	
@@ -653,7 +655,7 @@ $REGMAP["HPM CPLD1"] = @{
 				MSB = 3
 				LSB = 0
 				Exp = @(0xF)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x0 = "Default"
 					0x1 = "SCM AUX (HPM STBY EN)"
@@ -683,7 +685,7 @@ $REGMAP["HPM CPLD1"] = @{
 				MSB = 7
 				LSB = 5
 				Exp = @(0x4)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x0 = "INIT"					
 					0x1 = "PVCC3V3_AUX"
@@ -701,7 +703,7 @@ $REGMAP["HPM CPLD1"] = @{
 				MSB = 4
 				LSB = 2
 				Exp = @(0x4)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x0 = "INIT"					
 					0x1 = "PVCC3V3_AUX"
@@ -726,13 +728,13 @@ $REGMAP["HPM CPLD1"] = @{
 				MSB = 7
 				LSB = 4
 				Exp = @(0x4)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x0 = "INIT"					
 					0x1 = "S5_12V"
 					0x2 = "ON"
 					0x3 = "P3V3_OK"						
-					0x4 = "Done"
+					0x4 = "DONE"
 					0x5 = "PWR_OFF"					
 					0x6 = "PSU_FAULT"					
 					0x7 = "P3V3_FAULT"	
@@ -751,7 +753,7 @@ $REGMAP["HPM CPLD1"] = @{
 				MSB = 7
 				LSB = 4
 				Exp = @(0x5)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x0 = "INIT"					
 					0x1 = "PVCCD_HV"
@@ -772,7 +774,7 @@ $REGMAP["HPM CPLD1"] = @{
 				MSB = 3
 				LSB = 0
 				Exp = @(0x5)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x0 = "INIT"					
 					0x1 = "PVCCD_HV"
@@ -790,28 +792,17 @@ $REGMAP["HPM CPLD1"] = @{
 		)
 	}
 	
-	0xA4 = @{
-		Name = "Reserved"
-	
-		Fields = @(
-	
-			@{Name="Reserved_H" ; MSB=7; LSB=5; Exp=0x7}
-			@{Name="Reserved_L" ; MSB=4; LSB=2; Exp=0x7}
-	
-		)
-	}
-	
 	0xA5 = @{
-		Name = "root state -- pwr_stat"
+		Name = "ROOT STATE"
 	
 		Fields = @(
 	
 			@{
-				Name = "root state -- pwr_stat"
+				Name = "PWR STATE"
 				MSB = 7
 				LSB = 0
 				Exp = @(0xFF)
-	
+				STATE_INFO = $true
 				Meaning = @{
 					0x00 = "INIT"
 					0x01 = "HPM_STBY_RDY"
