@@ -27,32 +27,32 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x01 = @{
-		Name = "SGPIO Control / Status"
+		Name = "LSGPIO Enable Status"
 	
 		Fields = @(
 	
-			@{Name="SGPIO#0 Control Bit" ; MSB=0; LSB=0; Exp=1}
+			@{Name="LSGPIO Enable" ; MSB=0; LSB=0; Exp=1}
 	
 		)
 	}
 	
 	0x02 = @{
-		Name = "SGPIO Control / Status"
+		Name = "HSGPIO Enable Status"
 	
 		Fields = @(
 	
-			@{Name="SGPIO#1 Control Bit" ; MSB=0; LSB=0; Exp=1}
+			@{Name="HSGPIO Enable" ; MSB=0; LSB=0; Exp=1}
 	
 		)
 	}
 	
 	0x03 = @{
-		Name = "SGPIO Control / Status"
+		Name = "HSGPIO/LSGPIO Link Status"
 	
 		Fields = @(
 	
 			@{
-				Name = "SGPIO 1 Link Status"
+				Name = "HSGPIO Link Status"
 				MSB = 3
 				LSB = 2
 				Exp = @(0x3)
@@ -63,7 +63,7 @@ $REGMAP["DC-SCM"] = @{
 			}
 	
 			@{
-				Name = "SGPIO 0 Link Status"
+				Name = "LSGPIO Link Status"
 				MSB = 1
 				LSB = 0
 				Exp = @(0x3)
@@ -76,16 +76,16 @@ $REGMAP["DC-SCM"] = @{
 		)
 	}
 	
-	0x04 = @{
-		Name = "WOL Status"
-	
-		Fields = @(
-	
-			@{Name="WOL_OUT" ; MSB=1; LSB=1; Exp=1}
-			@{Name="WOL_IN"  ; MSB=0; LSB=0; Exp=1}
-	
-		)
-	}
+	#0x04 = @{ // Reserved for WOL Status
+	#	Name = "WOL Status"
+	#
+	#	Fields = @(
+	#
+	#		@{Name="WOL_OUT" ; MSB=1; LSB=1; Exp=1}
+	#		@{Name="WOL_IN"  ; MSB=0; LSB=0; Exp=1}
+	#
+	#	)
+	#}
 	
 	0x06 = @{
 		Name = "SGPIO CRC Error Count"
@@ -93,7 +93,7 @@ $REGMAP["DC-SCM"] = @{
 		Fields = @(
 	
 			@{
-				Name = "SGPIO 0 CRC Error Count"
+				Name = "LSGPIO CRC Error Count"
 				MSB = 7
 				LSB = 0
 				Exp = @(0x00)
@@ -112,7 +112,7 @@ $REGMAP["DC-SCM"] = @{
 		Fields = @(
 	
 			@{
-				Name = "SGPIO 1 CRC Error Count"
+				Name = "HSGPIO CRC Error Count"
 				MSB = 7
 				LSB = 0
 				Exp = @(0x00)
@@ -175,12 +175,11 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x10 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
 			@{Name="P0_PROCHOT_N"            ; MSB=7; LSB=7; Exp=1}
-			@{Name="Reserved6"               ; MSB=6; LSB=6; Exp=0}
 			@{Name="P0_BMC_MEMTRIP_N"        ; MSB=5; LSB=5; Exp=1}
 			@{Name="H_CPU0_MEMHOT_OUT_LVC1_N"; MSB=4; LSB=4; Exp=1}
 			@{Name="P0_MEM_VRHOT_N"          ; MSB=3; LSB=3; Exp=1}
@@ -191,12 +190,11 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x11 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
 			@{Name="P1_MEM_VRHOT_N"                ; MSB=7; LSB=7; Exp=1}
-			@{Name="Reserved6"                     ; MSB=6; LSB=6; Exp=0}
 			@{Name="PDB_ALERT2_N"                  ; MSB=5; LSB=5; Exp=1}
 			@{Name="PDB_ALERT1_N"                  ; MSB=4; LSB=4; Exp=1}
 			@{Name="PWRGD_CPU1_LVC3"               ; MSB=3; LSB=3; Exp=1}
@@ -207,7 +205,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x12 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -215,15 +213,14 @@ $REGMAP["DC-SCM"] = @{
 			@{Name="IRQ_PVCCIN_CPU1_VRHOT_LVC3_N"  ; MSB=6; LSB=6; Exp=1}
 			@{Name="FM_CPU1_THERMTRIP_LATCH_LVC3_N"; MSB=5; LSB=5; Exp=1}
 			@{Name="P1_SKTOCC_N"                   ; MSB=4; LSB=4; Exp=0}
-			@{Name="P1_PROCHOT_N"                  ; MSB=3; LSB=3; Exp=1}
-			@{Name="Reserved2"                     ; MSB=3; LSB=3; Exp=0}			
+			@{Name="P1_PROCHOT_N"                  ; MSB=3; LSB=3; Exp=1}			
 			@{Name="P1_BMC_MEMTRIP_N"              ; MSB=1; LSB=1; Exp=1}
 			@{Name="H_CPU1_MEMHOT_OUT_LVC1_N"      ; MSB=0; LSB=0; Exp=1}
 		)
 	}
 	
 	0x13 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -233,12 +230,10 @@ $REGMAP["DC-SCM"] = @{
 			@{Name="BMC_NODE_ID_1"        ; MSB=4; LSB=4; Exp=1}
 			@{Name="BMC_NODE_ID_0"        ; MSB=3; LSB=3; Exp=1}
 			@{Name="FM_BIOS_POST_CMPLT_N" ; MSB=2; LSB=2; Exp=0}
-			@{Name="Reserved1"            ; MSB=1; LSB=1; Exp=0}
-			@{Name="Reserved0"            ; MSB=1; LSB=1; Exp=0}
 		)
 	}
 	0x14 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -255,7 +250,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x15 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -272,7 +267,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x16 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -288,7 +283,7 @@ $REGMAP["DC-SCM"] = @{
 		)
 	}
 	0x17 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -305,7 +300,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x18 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -321,7 +316,7 @@ $REGMAP["DC-SCM"] = @{
 		)
 	}
 	0x19 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -334,7 +329,7 @@ $REGMAP["DC-SCM"] = @{
 	}	
 	
 	0x20 = @{
-		Name = "Check SGPIO1 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -366,7 +361,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x21 = @{
-		Name = "Check SGPIO1 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -383,7 +378,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x22 = @{
-		Name = "Check SGPIO1 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -400,7 +395,7 @@ $REGMAP["DC-SCM"] = @{
 	}	
 	
 	0x23 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -417,7 +412,7 @@ $REGMAP["DC-SCM"] = @{
 	}	
 	
 	0x24 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
 	
@@ -434,13 +429,10 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x25 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check LSGPIO Data"
 	
 		Fields = @(
-	
-			@{Name="Reserved7_4"          ; MSB=7; LSB=4; Exp=0}
-	
-			@{Name="FM_BMC_ENABLE"        ; MSB=3; LSB=3; Exp=1}
+
 			@{Name="TPM_BMC_ALERT_N"      ; MSB=2; LSB=2; Exp=1}
 			@{Name="FM_UEFI_DEBUG_MSG_EN" ; MSB=1; LSB=1; Exp=0}
 			@{Name="BMC_NVDIMM_PRSNT_N"   ; MSB=0; LSB=0; Exp=1}
@@ -449,7 +441,7 @@ $REGMAP["DC-SCM"] = @{
 	}	
 	
 	0x28 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check HSGPIO Data"
 	
 		Fields = @(
 	
@@ -466,7 +458,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x29 = @{
-		Name = "Check SGPIO0 Data"
+		Name = "Check HSGPIO Data"
 	
 		Fields = @(
 	
@@ -483,7 +475,7 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x32 = @{
-		Name = "Check SGPIO1 Data"
+		Name = "Check HSGPIO Data"
 	
 		Fields = @(
 	
@@ -500,11 +492,10 @@ $REGMAP["DC-SCM"] = @{
 	}
 	
 	0x33 = @{
-		Name = "Check SGPIO1 Data"
+		Name = "Check HSGPIO Data"
 	
 		Fields = @(
 	
-			@{Name="Reserved7_4"      ; MSB=7; LSB=4; Exp=0}
 			@{Name="PMB_ALERT_EN_N"   ; MSB=3; LSB=3; Exp=1}
 			@{Name="UART_SEL"         ; MSB=2; LSB=2; Exp=0}
 			@{Name="UART_BMC_BU6_TX"  ; MSB=1; LSB=1; Exp=1}

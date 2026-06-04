@@ -83,47 +83,11 @@ $REGMAP["GLOBAL CPLD"] = @{
 		Fields = @(
 	
 			@{Name="FAN_PWM_SEL"  ; MSB=7; LSB=7; Exp=0}
-			@{Name="FAN_PWM_CTRL" ; MSB=6; LSB=6; Exp=0}
-	
-			@{
-				Name="FAN_FREQ_SET"
-				MSB=5
-				LSB=0
-				InfoOnly=1
-			}
+			@{Name="FAN_PWM_CTRL" ; MSB=6; LSB=6; Exp=0}	
 	
 		)
 	}
 	
-	0x1A = @{
-		Name = "Fan Status"
-	
-		Fields = @(
-	
-			@{
-				Name="FAN_WDG_CNT"
-				MSB=7
-				LSB=0
-				InfoOnly=1
-			}
-	
-		)
-	}
-	
-	0x1B = @{
-		Name = "Fan Status"
-	
-		Fields = @(
-	
-			@{
-				Name="FAN_WDG"
-				MSB=7
-				LSB=0
-				InfoOnly=1
-			}
-	
-		)
-	}	
 
 	0x1D = @{
 		Name = "SYNC"
@@ -405,6 +369,9 @@ $REGMAP["GLOBAL CPLD"] = @{
 				Name = "Version"
 				InfoOnly = 1
 	
+				MSB = 7
+				LSB = 0
+
 				CombineVersion = @{
 					Major = 0xFE
 					Minor = 0xFF

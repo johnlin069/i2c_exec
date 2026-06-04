@@ -49,6 +49,16 @@ foreach($file in $logFiles)
         $currentSled = "SLED2"
     }
 
+    elseif($file.Name -match '^Sled3')
+    {
+        $currentSled = "SLED3"
+    }
+
+    elseif($file.Name -match '^Sled4')
+    {
+        $currentSled = "SLED4"
+    }
+
     # =====================================================
     # Detect Device From Filename
     # =====================================================
