@@ -1,0 +1,3 @@
+# Ignore all files under log_input and log_output
+log_input/
+log_output/
