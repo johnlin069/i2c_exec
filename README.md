@@ -19,16 +19,16 @@ The tool can also compare multiple SLEDs and highlight register differences to s
 ```text
 i2c_exec
 │
-├── config/             # Configuration files
-├── log_input/          # Input I2C dump logs
-├── log_output/         # Generated reports
-├── parser/             # decoding I2C
-├── regdb/              # Register database definitions
-├── Testing File/       # Sample logs for validation
+├── config/                             # Configuration files
+├── log_input/                          # Input I2C dump logs
+├── log_output/                         # Generated Universal dump.txt
+├── parser/                             # decoding Universal dump.txt
+├── regdb/                              # Register database definitions
+├── Testing File/                       # Sample logs for validation
 │
-├── main.ps1            # Main program
-├── execute result.bat  # Quick execution batch file
-├── Userguide.docx      # User guide
+├── main.ps1                            # Main program
+├── execute result.bat                  # Quick execution batch file (main.ps1)
+├── I2Creg_user_guide_20260601.pptx     # User guide
 └── README.md
 ```
 
@@ -42,7 +42,7 @@ i2c_exec
 - Support PASS/FAIL verification
 - Compare multiple SLED dumps
 - Highlight register pass and fail
-- Easily expandable register database
+- Easily expandable register database (regdb)
 
 ---
 
@@ -73,9 +73,10 @@ The parser accepts standard Linux `i2cdump` output.
 Example:
 
 ```bash
-sle
-i2cdump -y -f 5 0x30
-i2cdump -y -f 15 0x60
+i2cdump -y -f 6 0x30  (Global CPLD)
+i2cdump -y -f 5 0x30  (HPM CPLD1)
+i2cdump -y -f 5 0x31  (HPM CPLD1)
+i2cdump -y -f 15 0x60 (SCM CPLD) 
 ```
 ---
 
