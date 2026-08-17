@@ -1,7 +1,7 @@
 $REGMAP["GLOBAL CPLD"] = @{
 
 	0x00 = @{
-		Name = "CPU/Board ID"
+		Name = "System State"
 	
 		Fields = @(
 	
@@ -90,7 +90,7 @@ $REGMAP["GLOBAL CPLD"] = @{
 	
 
 	0x1D = @{
-		Name = "SYNC"
+		Name = "HPM Standby Reset Status"
 	
 		Fields = @(
 	
@@ -222,6 +222,28 @@ $REGMAP["GLOBAL CPLD"] = @{
 		)
 	}
 	
+	0xC3 = @{
+		Name = "Board Product Name"
+
+		Fields = @(
+			@{
+				Name = "Product Name"
+				InfoOnly = 1
+
+				MSB = 7
+				LSB = 0
+
+				CombineAscii = @(
+					0xC3
+					0xC4
+					0xC5
+					0xC6
+					0xC7
+				)
+			}
+		)
+	}
+	
 	0xF0 = @{
 		Name = "Power State"
 	
@@ -230,14 +252,14 @@ $REGMAP["GLOBAL CPLD"] = @{
 			@{Name="HPDB_P48V_AUX1_HS_FAULT_N" ; MSB=7; LSB=7; Exp=1}
 			@{Name="HPDB_P48V_AUX2_HS_FAULT_N" ; MSB=6; LSB=6; Exp=1}
 	
-			@{Name="VPDB_P48V_AUX3_HS_FAULT_N" ; MSB=5; LSB=5; Exp=0}
-			@{Name="VPDB_P48V_AUX4_HS_FAULT_N" ; MSB=4; LSB=4; Exp=0}
+			@{Name="VPDB_P48V_AUX3_HS_FAULT_N" ; MSB=5; LSB=5; Exp=1}
+			@{Name="VPDB_P48V_AUX4_HS_FAULT_N" ; MSB=4; LSB=4; Exp=1}
 	
-			@{Name="PWRGD_P12V_AUX1"          ; MSB=3; LSB=3; Exp=1}
-			@{Name="PWRGD_P12V_AUX2"          ; MSB=2; LSB=2; Exp=1}
+			@{Name="PWRGD_P12V_AUX1"           ; MSB=3; LSB=3; Exp=1}
+			@{Name="PWRGD_P12V_AUX2"           ; MSB=2; LSB=2; Exp=1}
 	
-			@{Name="flash_sel"                ; MSB=1; LSB=1; Exp=0}
-			@{Name="BMC_FPGA_MUX_SEL"         ; MSB=0; LSB=0; Exp=1}
+			@{Name="fru_flash_sel"             ; MSB=1; LSB=1; Exp=0}
+			@{Name="BMC_GFPGA_MUX_SEL"         ; MSB=0; LSB=0; Exp=1}
 	
 		)
 	}
@@ -246,8 +268,6 @@ $REGMAP["GLOBAL CPLD"] = @{
 		Name = "GLB_THROTTLE"
 	
 		Fields = @(
-	
-			@{Name="Reserved7"               ; MSB=7; LSB=7; Exp=0}
 	
 			@{Name="PWRGD_P12V_AUX4"         ; MSB=6; LSB=6; Exp=1}
 			@{Name="PWRGD_P12V_AUX3"         ; MSB=5; LSB=5; Exp=1}
@@ -307,10 +327,6 @@ $REGMAP["GLOBAL CPLD"] = @{
 		Name = "GLB_PWRBRK"
 	
 		Fields = @(
-	
-			@{Name="Reserved7" ; MSB=7; LSB=7; Exp=0}
-			@{Name="Reserved6" ; MSB=6; LSB=6; Exp=0}
-			@{Name="Reserved5" ; MSB=5; LSB=5; Exp=0}
 	
 			@{Name="GLB_PWRBRK_R_N_S_ALL" ; MSB=4; LSB=4; Exp=1}
 	

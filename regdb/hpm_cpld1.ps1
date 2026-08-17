@@ -45,16 +45,16 @@ $REGMAP["HPM CPLD1"] = @{
         )
     }
     0x07 = @{
-        Name = "COMMOM INFO"
+        Name = "Cable Mode Configuration"
         
 		Fields = @(
-            @{Name="NodeID"; MSB=1; LSB=0; Exp = @(0x0, 0x1, 0x2, 0x3)
+            @{Name="Cable Mode"; MSB=1; LSB=0; Exp = @(0x0, 0x1, 0x2, 0x3)
                     InfoOnly = 1
 					Meaning = @{
-                    0x0 = "SLED1"
-                    0x1 = "SLED2"
-                    0x2 = "SLED3"
-                    0x3 = "SLED4"
+                    0x0 = "2S"
+                    0x1 = "8S"
+                    0x2 = "Check UPI cable"
+                    0x3 = "4S"
                 }   
             }
         )
@@ -194,10 +194,10 @@ $REGMAP["HPM CPLD1"] = @{
 
 		Fields = @(
 
-        @{Name="M_AB_CPU0_RESET_N" ; MSB=7; LSB=7; Exp=0}
+        @{Name="M_AB_CPU0_RESET_N" ; MSB=7; LSB=7; Exp=1}
         @{Name="M_CD_CPU0_RESET_N" ; MSB=6; LSB=6; Exp=1}
         @{Name="M_EF_CPU0_RESET_N" ; MSB=5; LSB=5; Exp=1}
-        @{Name="M_GH_CPU0_RESET_N" ; MSB=4; LSB=4; Exp=0}
+        @{Name="M_GH_CPU0_RESET_N" ; MSB=4; LSB=4; Exp=1}
 
 		)
 	}
@@ -207,10 +207,10 @@ $REGMAP["HPM CPLD1"] = @{
 
 		Fields = @(
 
-        @{Name="M_AB_CPU0_FPGA_RESET_R_N" ; MSB=7; LSB=7; Exp=0}
+        @{Name="M_AB_CPU0_FPGA_RESET_R_N" ; MSB=7; LSB=7; Exp=1}
         @{Name="M_CD_CPU0_FPGA_RESET_R_N" ; MSB=6; LSB=6; Exp=1}
         @{Name="M_EF_CPU0_FPGA_RESET_R_N" ; MSB=5; LSB=5; Exp=1}
-        @{Name="M_GH_CPU0_FPGA_RESET_R_N" ; MSB=4; LSB=4; Exp=0}
+        @{Name="M_GH_CPU0_FPGA_RESET_R_N" ; MSB=4; LSB=4; Exp=1}
 
 		)
 	}
@@ -220,10 +220,10 @@ $REGMAP["HPM CPLD1"] = @{
     
         Fields = @(
     
-            @{Name="M_AB_CPU1_RESET_N" ; MSB=7; LSB=7; Exp=0}
-            @{Name="M_CD_CPU1_RESET_N" ; MSB=6; LSB=6; Exp=0}
+            @{Name="M_AB_CPU1_RESET_N" ; MSB=7; LSB=7; Exp=1}
+            @{Name="M_CD_CPU1_RESET_N" ; MSB=6; LSB=6; Exp=1}
             @{Name="M_EF_CPU1_RESET_N" ; MSB=5; LSB=5; Exp=1}
-            @{Name="M_GH_CPU1_RESET_N" ; MSB=4; LSB=4; Exp=0}
+            @{Name="M_GH_CPU1_RESET_N" ; MSB=4; LSB=4; Exp=1}
     
         )
     }
@@ -233,10 +233,10 @@ $REGMAP["HPM CPLD1"] = @{
     
         Fields = @(
     
-            @{Name="M_AB_CPU1_FPGA_RESET_R_N" ; MSB=7; LSB=7; Exp=0}
-            @{Name="M_CD_CPU1_FPGA_RESET_R_N" ; MSB=6; LSB=6; Exp=0}
+            @{Name="M_AB_CPU1_FPGA_RESET_R_N" ; MSB=7; LSB=7; Exp=1}
+            @{Name="M_CD_CPU1_FPGA_RESET_R_N" ; MSB=6; LSB=6; Exp=1}
             @{Name="M_EF_CPU1_FPGA_RESET_R_N" ; MSB=5; LSB=5; Exp=1}
-            @{Name="M_GH_CPU1_FPGA_RESET_R_N" ; MSB=4; LSB=4; Exp=0}
+            @{Name="M_GH_CPU1_FPGA_RESET_R_N" ; MSB=4; LSB=4; Exp=1}
     
         )
     }
@@ -506,7 +506,7 @@ $REGMAP["HPM CPLD1"] = @{
             @{Name="iFM_CPU0_JTAG_CTRL_EN_R"   ; MSB=7; LSB=7; Exp=1}
             @{Name="iFM_CPU1_JTAG_CTRL_EN_R"   ; MSB=6; LSB=6; Exp=1}
             @{Name="iFM_TDO_ISO_SW_R"          ; MSB=5; LSB=5; Exp=1}
-            @{Name="iFM_TDO_MUX_SEL_R"         ; MSB=4; LSB=4; Exp=0}
+            @{Name="iFM_TDO_MUX_SEL_R"         ; MSB=4; LSB=4; Exp=1}
             @{Name="iFM_UART2_FPGA_SELECT"     ; MSB=3; LSB=3; Exp=0}
             @{Name="iFM_USB_CPU_FPGA_SELECT"   ; MSB=2; LSB=2; Exp=0}
             @{Name="Reserved1"                 ; MSB=1; LSB=1; Exp=0}
@@ -536,7 +536,7 @@ $REGMAP["HPM CPLD1"] = @{
             @{Name="iPDB_ALERT3_EN_N"           ; MSB=5; LSB=5; Exp=1}
             @{Name="iBMC_PWRCAP_N"              ; MSB=4; LSB=4; Exp=1}
             @{Name="iBMC_FORCE_NM_THROTTLE_EN_N"; MSB=3; LSB=3; Exp=1}
-            @{Name="iRM_THROTTLE_EN_N"          ; MSB=2; LSB=2; Exp=0}
+            @{Name="iRM_THROTTLE_EN_N"          ; MSB=2; LSB=2; Exp=1}
             @{Name="iPMB_ALERT_EN_N"            ; MSB=1; LSB=1; Exp=1}
             @{Name="iPBREAK_EN_N"               ; MSB=0; LSB=0; Exp=1}
     
@@ -576,7 +576,7 @@ $REGMAP["HPM CPLD1"] = @{
 	
 		Fields = @(
 	
-			@{Name="iJTAG_BMC_PLD_NRST_N" ; MSB=7; LSB=7; Exp=0}
+			@{Name="iJTAG_BMC_PLD_NRST_N" ; MSB=7; LSB=7; Exp=1}
 			@{Name="iJTAG_BMC_PLD_SRST_N" ; MSB=6; LSB=6; Exp=1}
 	
 		)
@@ -657,19 +657,19 @@ $REGMAP["HPM CPLD1"] = @{
 				Exp = @(0xF)
 				STATE_INFO = $true
 				Meaning = @{
-					0x0 = "Default"
-					0x1 = "SCM AUX (HPM STBY EN)"
-					0x2 = "BMC Boot (HPM STBY_RSTn)"
-					0x3 = "CPU AUX OK (S5 state)"
-					0x4 = "Enable main power"
-					0x5 = "CPU MEM PWR"
-					0x6 = "CPU S0 PWROK"
-					0x7 = "CPU PWRGD"
-					0x8 = "CPU RESET"
-					0x9 = "ERROR state"
-					0xA = "ST ADR"
-					0xC = "ST HANDSHAKE_0"
-					0xF = "Platform on (S0 state)"
+					0x0 = "ST_INIT (Check SGPIO (HPM and Global) Link Status)"
+					0x1 = "ST_SCM_AUX (Check HPM_STBY_EN_R from SCM CPLD)"
+					0x2 = "ST_BMC_BOOT (Check HPM RST Handshake with Global)"
+					0x3 = "ST_LCPU_AUX (Check SYS_OK_2P / SLP_S4_N Handshake with Global)"
+					0x4 = "ST_PSU (Check PSU Status (0xA2))"
+					0x5 = "ST_CPU_MEM (Check CPU Memory Power Rail Status (0xA3))"
+					0x6 = "ST_S0_PWROK (Check CLK Ready/CLK Buffer PWRGD (0x60))" 
+					0x7 = "ST_CPU_PWRGD (Check RST_PLTRST Handshake with Global)"
+					0x8 = "ST_CPU_RESET (This is for Surprise Reset flow)"
+					0xA = "ST_ERROR"
+					0xB = "ST_ADR"
+					0xC = "ST_HANDSHAKE_0 (Check REFCLK_READY Handshake with Global)"
+					0xF = "ST_PLATFORM_ON (S0 state)"
 				}
 			}
 		)
@@ -687,14 +687,14 @@ $REGMAP["HPM CPLD1"] = @{
 				Exp = @(0x4)
 				STATE_INFO = $true
 				Meaning = @{
-					0x0 = "INIT"					
-					0x1 = "PVCC3V3_AUX"
-					0x2 = "PVCCFA_EHV"
-					0x3 = "PVNN_MAIN"						
-					0x4 = "CPU_AUX_ON_Success"
-					0x5 = "PVCCFA_EHV_OFF"					
-					0x6 = "PVNN_MAIN_OFF"					
-					0x7 = "PWROFF_TIMEOUT"					
+					0x0 = "ST_INIT"					
+					0x1 = "ST_PVCC3V3_AUX"
+					0x2 = "ST_PVCCFA_EHV"
+					0x3 = "ST_PVNN_MAIN"						
+					0x4 = "ST_CPU_AUX_ON(Success)"
+					0x5 = "ST_PVNN_MAIN_OFF"					
+					0x6 = "ST_PVCCFA_EHV_OFF"					
+					0x7 = "ST_PWROFF_TIMEOUT"					
 				}
 			}
 	
@@ -705,14 +705,14 @@ $REGMAP["HPM CPLD1"] = @{
 				Exp = @(0x4)
 				STATE_INFO = $true
 				Meaning = @{
-					0x0 = "INIT"					
-					0x1 = "PVCC3V3_AUX"
-					0x2 = "PVCCFA_EHV"
-					0x3 = "PVNN_MAIN"						
-					0x4 = "CPU_AUX_ON_Success"
-					0x5 = "PVCCFA_EHV_OFF"					
-					0x6 = "PVNN_MAIN_OFF"					
-					0x7 = "PWROFF_TIMEOUT"	
+					0x0 = "ST_INIT"					
+					0x1 = "ST_PVCC3V3_AUX"
+					0x2 = "ST_PVCCFA_EHV"
+					0x3 = "ST_PVNN_MAIN"						
+					0x4 = "ST_CPU_AUX_ON(Success)"
+					0x5 = "ST_PVCCFA_EHV_OFF"					
+					0x6 = "ST_PVNN_MAIN_OFF"					
+					0x7 = "ST_PWROFF_TIMEOUT"	
 				}
 			}
 		)
@@ -1018,10 +1018,10 @@ $REGMAP["HPM CPLD1"] = @{
 				Name = "P12V_CXL_PG"
 				MSB = 2
 				LSB = 2
-				Exp = @(0x0)
+				Exp = @(0x1)
 	
 				Meaning = @{
-					0x0 = "Power Good"
+					0x1 = "Power Good"
 				}
 			}
 	
