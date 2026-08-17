@@ -270,7 +270,20 @@ function Decode-All
 										$majorVal,
 										$minorVal
 									)
-								}								
+								}
+                                elseif($field.ContainsKey("CombineAscii"))
+                                {
+                                    $asciiText = ""
+
+                                    foreach($addr in $field.CombineAscii)
+                                    {
+                                        if($devData.ContainsKey($addr))
+                                        {
+                                            $asciiText += [char]$devData[$addr]
+                                        }
+                                    }
+                                    $valueText = $asciiText
+                                }    
 								else
 								{
 									$valueText = (

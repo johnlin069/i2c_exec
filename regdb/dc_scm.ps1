@@ -288,7 +288,7 @@ $REGMAP["DC-SCM"] = @{
 		Fields = @(
 	
 			@{Name="PLD_PORST_N"          ; MSB=7; LSB=7; Exp=1}
-			@{Name="JTAG_BMC_PLD_NRST_N"  ; MSB=6; LSB=6; Exp=0}
+			@{Name="JTAG_BMC_PLD_NRST_N"  ; MSB=6; LSB=6; Exp=1}
 			@{Name="RST_RSMRST_PLD_N"     ; MSB=5; LSB=5; Exp=1}
 			@{Name="PWRGD_PCH_BFC_PWROK"  ; MSB=4; LSB=4; Exp=1}
 			@{Name="HPM_BRD_REV_ID2"      ; MSB=3; LSB=3; Exp=0}
@@ -406,7 +406,7 @@ $REGMAP["DC-SCM"] = @{
 			@{Name="PWRBRK_SLI_OE_N"  ; MSB=3; LSB=3; Exp=1}
 			@{Name="BMC_PCH_FM"       ; MSB=2; LSB=2; Exp=1}
 			@{Name="PBREAK_EN_N"      ; MSB=1; LSB=1; Exp=1}
-			@{Name="RM_THROTTLE_EN_N" ; MSB=0; LSB=0; Exp=0}
+			@{Name="RM_THROTTLE_EN_N" ; MSB=0; LSB=0; Exp=1}
 	
 		)
 	}	
@@ -419,7 +419,6 @@ $REGMAP["DC-SCM"] = @{
 			@{Name="FM_BMC_ONCTL_N"            ; MSB=7; LSB=7; Exp=0}
 			@{Name="FM_BMC_CRASHLOG_TRIG_N"    ; MSB=6; LSB=6; Exp=1}
 			@{Name="FM_BIOS_MRC_DEBUG_MSG_DIS_N"; MSB=5; LSB=5; Exp=1}
-			@{Name="ARM_SRST_N"                ; MSB=4; LSB=4; Exp=0}
 			@{Name="CPU_FBRK_OUT_N"            ; MSB=3; LSB=3; Exp=1}
 			@{Name="P1_DISABLE_COD_R_N"        ; MSB=2; LSB=2; Exp=1}
 			@{Name="IRQ_TPM_SPI_N"             ; MSB=1; LSB=1; Exp=1}

@@ -37,24 +37,24 @@ foreach($file in $logFiles)
     # Default State
     # =====================================================
 
-    $currentSled = "SLED1"
+    $currentSled = "SLED1" # Default SLED is SLED1, Only Change When SLED Detected in Filename or Content
     $currentDev  = $null
 
     # =====================================================
     # Detect SLED From Filename
     # =====================================================
 
-    if($file.Name -match '^Sled2')
+    if($file.Name -match '^sled2')
     {
         $currentSled = "SLED2"
     }
 
-    elseif($file.Name -match '^Sled3')
+    elseif($file.Name -match '^sled3')
     {
         $currentSled = "SLED3"
     }
 
-    elseif($file.Name -match '^Sled4')
+    elseif($file.Name -match '^sled4')
     {
         $currentSled = "SLED4"
     }
@@ -67,33 +67,33 @@ foreach($file in $logFiles)
     {
         $currentDev = "DC-SCM"
 
-        # Write-Host (
-        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        #) -ForegroundColor Yellow
+        Write-Host (
+            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        ) -ForegroundColor Yellow
     }
     elseif($file.Name -match 'cpld1')
     {
         $currentDev = "HPM CPLD1"
 
-        # Write-Host (
-        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        #) -ForegroundColor Yellow
+        Write-Host (
+            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        ) -ForegroundColor Yellow
     }
     elseif($file.Name -match 'cpld2')
     {
         $currentDev = "HPM CPLD2"
 
-        # Write-Host (
-        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        #) -ForegroundColor Yellow
+        Write-Host (
+            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        ) -ForegroundColor Yellow
     }
-    elseif($file.Name -match 'gbl')
+    elseif($file.Name -match '(gbl|glb)')
     {
         $currentDev = "GLOBAL CPLD"
 
-        # Write-Host (
-        #    "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
-        #) -ForegroundColor Yellow
+        Write-Host (
+            "[Filename Detect] SLED=$currentSled DEVICE=$currentDev"
+        ) -ForegroundColor Yellow
     }
 
     # =====================================================
@@ -112,7 +112,7 @@ foreach($file in $logFiles)
     }
 
     # =====================================================
-    # Parse File
+    # ( Priority 2 : Content Detect )
     # =====================================================
 
     Get-Content $file.FullName | ForEach-Object {

@@ -10,7 +10,6 @@ $ShowPass = (Read-Host "Show PASS message? (Y/N)").ToUpper()
 
 . .\parser\parser.ps1
 . .\parser\decode.ps1
-. .\parser\compare.ps1
 
 
 # =====================================================
@@ -37,30 +36,7 @@ $REGMAP = @{}
 
 
 # =====================================================
-# Decode values
+# Function Call
 # =====================================================
 
 Decode-All
-
-#switch($Mode)
-#{
-#    "1"
-#    {
-#        Decode-All
-#    }
-#
-#    "2"
-#    {
-#        Compare-All
-#    }
-#
-#    "3"
-#    {
-#        Compare-All
-#    }
-#
-#    default
-#    {
-#        Write-Host "[ERROR] Invalid Mode" -ForegroundColor Red
-#    }
-#}

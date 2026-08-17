@@ -22,12 +22,19 @@ $REGMAP["HPM CPLD2"] = @{
 			}
 	
 			@{
-				Name = "CPU0_FRMAGENT_R"
+				Name = "CPU0_FRMAGENT_STATUS"
 	
 				MSB = 0
 				LSB = 0
-	
-				Exp = 1
+				
+				InfoOnly = 1
+				
+				
+				Meaning = @{
+					0x0 = "None Legacy"
+					0x1 = "Legacy"
+				}
+
 			}
 		)
 	}	
@@ -84,7 +91,10 @@ $REGMAP["HPM CPLD2"] = @{
 	
 				InfoOnly = 1
 				Meaning = @{
-					0 = "Correct SKU"
+					0 = "BOM_A"
+					1 = "BOM_B"
+					2 = "BOM_C"					
+					3 = "BOM_D"					
 				}
 			}
 	
@@ -155,21 +165,25 @@ $REGMAP["HPM CPLD2"] = @{
 		Name = "E1.S P12V Enable"
 	
 		Fields = @(
-			@{Name="ES1_INTR_NP12V_ES1_WE" ; MSB=7; LSB=7; Exp=0}
-			@{Name="ES2_INTR_NP12V_ES2_WE" ; MSB=6; LSB=6; Exp=0}
-			@{Name="ES3_INTR_NP12V_ES3_WE" ; MSB=5; LSB=5; Exp=0}
-			@{Name="ES4_INTR_NP12V_ES4_WE" ; MSB=4; LSB=4; Exp=0}
+			@{Name="P12V_ESS0_EN_1" ; MSB=7; LSB=7; Exp=1}
+			@{Name="P12V_ESS0_EN_2" ; MSB=6; LSB=6; Exp=1}
+			@{Name="P12V_ESS0_EN_3" ; MSB=5; LSB=5; Exp=1}
+			@{Name="P12V_ESS0_EN_4" ; MSB=4; LSB=4; Exp=1}
+			@{Name="P12V_ESS1_EN_1" ; MSB=3; LSB=3; Exp=1}
+			@{Name="P12V_ESS1_EN_2" ; MSB=2; LSB=2; Exp=1}
+			@{Name="P12V_ESS1_EN_3" ; MSB=1; LSB=1; Exp=1}
+			@{Name="P12V_ESS1_EN_4" ; MSB=0; LSB=0; Exp=1}			
 		)
 	}
 	
 	0x28 = @{
-		Name = "E1.S Present"
+		Name = "E1.S Presence detection"
 	
 		Fields = @(
-			@{Name="PRSNT_ES1_R_N" ; MSB=7; LSB=7; Exp=1}
-			@{Name="PRSNT_ES2_R_N" ; MSB=6; LSB=6; Exp=1}
-			@{Name="PRSNT_ES3_R_N" ; MSB=5; LSB=5; Exp=1}
-			@{Name="PRSNT_ES4_R_N" ; MSB=4; LSB=4; Exp=1}
+			@{Name="PRSNT_ES1_R_N" ; MSB=7; LSB=7; Exp=0}
+			@{Name="PRSNT_ES2_R_N" ; MSB=6; LSB=6; Exp=0}
+			@{Name="PRSNT_ES3_R_N" ; MSB=5; LSB=5; Exp=0}
+			@{Name="PRSNT_ES4_R_N" ; MSB=4; LSB=4; Exp=0}
 		)
 	}
 	
@@ -177,10 +191,10 @@ $REGMAP["HPM CPLD2"] = @{
 		Name = "P3V3 AUX E1.S"
 	
 		Fields = @(
-			@{Name="PWRGD_P3V3_AUX_ES1" ; MSB=7; LSB=7; Exp=0}
-			@{Name="PWRGD_P3V3_AUX_ES2" ; MSB=6; LSB=6; Exp=0}
-			@{Name="PWRGD_P3V3_AUX_ES3" ; MSB=5; LSB=5; Exp=0}
-			@{Name="PWRGD_P3V3_AUX_ES4" ; MSB=4; LSB=4; Exp=0}
+			@{Name="PWRGD_P3V3_AUX_ES1" ; MSB=7; LSB=7; Exp=1}
+			@{Name="PWRGD_P3V3_AUX_ES2" ; MSB=6; LSB=6; Exp=1}
+			@{Name="PWRGD_P3V3_AUX_ES3" ; MSB=5; LSB=5; Exp=1}
+			@{Name="PWRGD_P3V3_AUX_ES4" ; MSB=4; LSB=4; Exp=1}
 		)
 	}
 	
@@ -188,26 +202,15 @@ $REGMAP["HPM CPLD2"] = @{
 		Name = "P12V Enable E1.S"
 	
 		Fields = @(
-			@{Name="P12V_ES1_EN" ; MSB=7; LSB=7; Exp=0}
-			@{Name="P12V_ES2_EN" ; MSB=6; LSB=6; Exp=0}
-			@{Name="P12V_ES3_EN" ; MSB=5; LSB=5; Exp=0}
-			@{Name="P12V_ES4_EN" ; MSB=4; LSB=4; Exp=0}
+			@{Name="P12V_ES1_EN" ; MSB=7; LSB=7; Exp=1}
+			@{Name="P12V_ES2_EN" ; MSB=6; LSB=6; Exp=1}
+			@{Name="P12V_ES3_EN" ; MSB=5; LSB=5; Exp=1}
+			@{Name="P12V_ES4_EN" ; MSB=4; LSB=4; Exp=1}
 		)
 	}
 	
 	0x2B = @{
 		Name = "E1.S Power Good"
-	
-		Fields = @(
-			@{Name="PWRGD_ES1_N" ; MSB=7; LSB=7; Exp=1}
-			@{Name="PWRGD_ES2_N" ; MSB=6; LSB=6; Exp=1}
-			@{Name="PWRGD_ES3_N" ; MSB=5; LSB=5; Exp=1}
-			@{Name="PWRGD_ES4_N" ; MSB=4; LSB=4; Exp=1}
-		)
-	}
-	
-	0x2C = @{
-		Name = "E1.S Power Good 2"
 	
 		Fields = @(
 			@{Name="PWRGD_ES1_N" ; MSB=7; LSB=7; Exp=0}
@@ -217,14 +220,25 @@ $REGMAP["HPM CPLD2"] = @{
 		)
 	}
 	
+	0x2C = @{
+		Name = "E1.S Power Good P12V"
+	
+		Fields = @(
+			@{Name="PWRGD_P12V_ES1" ; MSB=7; LSB=7; Exp=1}
+			@{Name="PWRGD_P12V_ES2" ; MSB=6; LSB=6; Exp=1}
+			@{Name="PWRGD_P12V_ES3" ; MSB=5; LSB=5; Exp=1}
+			@{Name="PWRGD_P12V_ES4" ; MSB=4; LSB=4; Exp=1}
+		)
+	}
+	
 	0x2D = @{
 		Name = "P3V3 AUX ES Enable"
 	
 		Fields = @(
-			@{Name="P3V3_AUX_ES1_EN" ; MSB=7; LSB=7; Exp=0}
-			@{Name="P3V3_AUX_ES2_EN" ; MSB=6; LSB=6; Exp=0}
-			@{Name="P3V3_AUX_ES3_EN" ; MSB=5; LSB=5; Exp=0}
-			@{Name="P3V3_AUX_ES4_EN" ; MSB=4; LSB=4; Exp=0}
+			@{Name="P3V3_AUX_ES1_EN" ; MSB=7; LSB=7; Exp=1}
+			@{Name="P3V3_AUX_ES2_EN" ; MSB=6; LSB=6; Exp=1}
+			@{Name="P3V3_AUX_ES3_EN" ; MSB=5; LSB=5; Exp=1}
+			@{Name="P3V3_AUX_ES4_EN" ; MSB=4; LSB=4; Exp=1}
 		)
 	}
 	
@@ -232,10 +246,10 @@ $REGMAP["HPM CPLD2"] = @{
 		Name = "E1.S PERST#"
 	
 		Fields = @(
-			@{Name="RST_ES1_PERST_N" ; MSB=7; LSB=7; Exp=0}
-			@{Name="RST_ES2_PERST_N" ; MSB=6; LSB=6; Exp=0}
-			@{Name="RST_ES3_PERST_N" ; MSB=5; LSB=5; Exp=0}
-			@{Name="RST_ES4_PERST_N" ; MSB=4; LSB=4; Exp=0}
+			@{Name="RST_ES1_PERST_N" ; MSB=7; LSB=7; Exp=1}
+			@{Name="RST_ES2_PERST_N" ; MSB=6; LSB=6; Exp=1}
+			@{Name="RST_ES3_PERST_N" ; MSB=5; LSB=5; Exp=1}
+			@{Name="RST_ES4_PERST_N" ; MSB=4; LSB=4; Exp=1}
 		)
 	}
 	
@@ -249,6 +263,20 @@ $REGMAP["HPM CPLD2"] = @{
 			@{Name="ATTN_LED_ES1" ; MSB=1; LSB=0; Exp=0}
 		)
 	}
+	0x30 = @{
+		Name = "BOOT ACK/BOOT SYNC/P12V_CXL_EN/E1S_PWR_CTRL"
+	
+		Fields = @(
+			@{Name="Default"             ; MSB=7; LSB=7; Exp=0}
+			@{Name="Default"             ; MSB=6; LSB=6; Exp=0}
+			@{Name="FM_BOOT_ACK_SYNC"    ; MSB=5; LSB=5; Exp=0}
+			@{Name="FM_FIRST_BOOT_SYNC"  ; MSB=4; LSB=4; Exp=0}
+			@{Name="Default"             ; MSB=3; LSB=3; Exp=0}
+			@{Name="Default"             ; MSB=2; LSB=2; Exp=0}
+			@{Name="FM_P12V_CXL_EN"      ; MSB=1; LSB=1; Exp=1}
+			@{Name="E1S_PWR_CTRL_PATH"   ; MSB=0; LSB=0; Exp=1}
+		)
+	}	
 	0x31 = @{
 		Name = "SLED1 E1S FAULT and LOC Status"
 	
@@ -378,10 +406,10 @@ $REGMAP["HPM CPLD2"] = @{
 				MSB = 0
 				LSB = 0
 	
-				Exp = 1
+				InfoOnly = 1
 	
 				Meaning = @{
-					0 = "BIOS Not Ready"
+					0 = "NONE LEGACY"
 					1 = "BIOS Ready"
 				}
 			}
@@ -483,7 +511,14 @@ $REGMAP["HPM CPLD2"] = @{
 				MSB = 1
 				LSB = 1
 	
-				Exp = 0
+	
+				InfoOnly = 1
+	
+				Meaning = @{
+					0x0 = "LEGACY"
+					0x1 = "NONE LEGACY"
+				}
+	
 			}
 	
 			@{
@@ -492,7 +527,7 @@ $REGMAP["HPM CPLD2"] = @{
 				MSB = 0
 				LSB = 0
 	
-				Exp = 0
+				Exp = 1
 			}	
 	
 		)
