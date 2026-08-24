@@ -4,7 +4,7 @@ $REGMAP["HPM CPLD1"] = @{
         Name = "CPU0_STATUS"
         
 		Fields = @(
-            @{Name="PACKAGE_ID";   MSB=7; LSB=5; Exp = 0x0}
+            @{Name="PACKAGE_ID";   MSB=7; LSB=5; Exp = 0x0} 
             @{Name="PROCESSOR_ID"; MSB=4; LSB=3; Exp = 0x0}
             @{Name="SKTOCC";       MSB=2; LSB=2; Exp = 0x0}
         )

@@ -28,7 +28,7 @@ i2c_exec
 │
 ├── main.ps1                            # Main program
 ├── execute result.bat                  # Quick execution batch file (main.ps1)
-├── I2Creg_user_guide_20260601.pptx     # User guide
+├── I2Creg_user_guide_20260824.pptx     # User guide
 └── README.md
 ```
 
