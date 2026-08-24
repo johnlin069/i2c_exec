@@ -9,15 +9,16 @@ $OUTPUT = Join-Path $OUTPUT_PATH "normalized_dump.txt"
 "" | Out-File $OUTPUT
 
 # =====================================================
-# Device Map (Mixed Dump Mode)
+# Device Map LOAD
 # =====================================================
+. "$PSScriptRoot\..\config\device_map.ps1"
 
-$DEVICE_MAP = @{
-    "15_60" = "DC-SCM"
-    "5_30"  = "HPM CPLD1"
-    "5_31"  = "HPM CPLD2"
-    "6_30"  = "GLOBAL CPLD"
-}
+#$DEVICE_MAP = @{
+#    "15_60" = "DC-SCM"
+#    "5_30"  = "HPM CPLD1"
+#    "5_31"  = "HPM CPLD2"
+#    "6_30"  = "GLOBAL CPLD"
+#}
 
 # =====================================================
 # Find Logs
